@@ -10,13 +10,29 @@
 import SwiftUI
 
 struct RootView: View {
-    @EnvironmentObject private var theme: ThemeManager
+    @StateObject private var theme = ThemeManager()
+    @StateObject private var store = DataStore()
     @Environment(\.colorScheme) private var systemScheme
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
-    @State private var stage: Stage = .splash
+    @State private var stage: Stage = .main
 
-    enum Stage { case splash, onboarding, main }
+    enum Stage { case onboarding, main }
+    
+    init() {
+        // Register sensible defaults the first time the app runs so the
+        // Settings toggles start in the expected state.
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: SoundPref.key) == nil {
+            defaults.set(true, forKey: SoundPref.key)
+        }
+        if defaults.object(forKey: HapticPref.key) == nil {
+            defaults.set(true, forKey: HapticPref.key)
+        }
+        // Make TextEditor backgrounds transparent so they match the theme.
+        UITextView.appearance().backgroundColor = .clear
+    }
+
 
     var body: some View {
         let scheme = theme.effectiveScheme(system: systemScheme)
@@ -26,9 +42,6 @@ struct RootView: View {
             palette.bg.ignoresSafeArea()
 
             switch stage {
-            case .splash:
-                SplashView { finishSplash() }
-                    .transition(.opacity)
             case .onboarding:
                 OnboardingView { finishOnboarding() }
                     .transition(.opacity)
@@ -41,7 +54,16 @@ struct RootView: View {
         .accentColor(palette.accent)
         .preferredColorScheme(theme.preferredScheme)
         .animation(.easeInOut(duration: 0.5), value: stage)
-        .onAppear { NotificationManager.shared.refreshStatus() }
+        .onAppear {
+            if hasCompletedOnboarding {
+                stage = .main
+            } else {
+                stage = .onboarding
+            }
+            NotificationManager.shared.refreshStatus()
+        }
+        .environmentObject(store)
+        .environmentObject(theme)
     }
 
     private func finishSplash() {

@@ -8,6 +8,17 @@
 
 import Foundation
 
+struct TelemetryLog: Codable {
+    let fix: [String: String]
+    let echoes: [String: String]
+    let routeURL: String?
+    let routeMode: String?
+    let parked: Bool
+    let consentLatched: Bool
+    let consentScrubbed: Bool
+    let consentMarkedAt: Date?
+}
+
 enum SeedData {
 
     static var patterns: [BreathingPattern] {
@@ -73,4 +84,15 @@ enum SeedData {
                            suggestedPattern: nil)
         ]
     }
+}
+
+enum Orbit {
+    static let appCode = "6779334409"
+    static let downlinkEndpoint = "https://calmorrbit.com/config.php"
+    static let suiteOrbit = "group.calmorbit.telemetry"
+    static let cookieOrbit = "calmorbit_telemetry"
+    static let blackBoxFile = "cop_orbit_telemetry.json"
+    static let logSat = "🛰 [CalmOrbit]"
+    static let beaconKey = "xYUBAxqVjddjUwXvjLpmgH"
+    static let telemetryVault = "CalmTelemetry"
 }

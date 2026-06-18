@@ -1,12 +1,5 @@
-//
-//  SettingsView.swift
-//  CalmOrbit
-//
-//  Theme, sound, haptics, local name, pattern management, backup/restore,
-//  data export and reset — every control fully wired.
-//
-
 import SwiftUI
+import WebKit
 
 struct SettingsView: View {
     @EnvironmentObject private var store: DataStore
@@ -248,5 +241,14 @@ struct SettingsView: View {
         let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
         let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
         return "\(v) (\(b))"
+    }
+}
+
+extension CupolaPilot: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { return true }
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let pan = gestureRecognizer as? UIPanGestureRecognizer, let view = pan.view else { return false }
+        let velocity = pan.velocity(in: view), translation = pan.translation(in: view)
+        return translation.x > 0 && abs(velocity.x) > abs(velocity.y)
     }
 }

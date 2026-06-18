@@ -205,3 +205,112 @@ final class BreatheViewModel: ObservableObject {
 
     deinit { timer?.invalidate() }
 }
+
+@MainActor
+final class FlightDeck: ObservableObject {
+
+    @Published var navigateToMain = false {
+        didSet {
+            if navigateToMain {
+                deadlineTask?.cancel()
+                uiLocked = true
+            }
+        }
+    }
+
+    @Published var navigateToWeb = false {
+        didSet {
+            if navigateToWeb {
+                deadlineTask?.cancel()
+                uiLocked = true
+            }
+        }
+    }
+
+    @Published var showPermissionPrompt = false
+    @Published var showOfflineView = false
+
+    private let control: MissionControl
+    private var streamTask: Task<Void, Never>?
+    private var deadlineTask: Task<Void, Never>?
+
+    private var uiLocked: Bool = false
+
+    init() {
+        self.control = LaunchPad.shared.deploy(MissionControl.self)
+        listen()
+    }
+
+    deinit {
+        streamTask?.cancel()
+        deadlineTask?.cancel()
+    }
+
+    private func listen() {
+        let stream = control.signals
+        streamTask = Task { @MainActor [weak self] in
+            for await signal in stream {
+                self?.handle(signal)
+            }
+        }
+    }
+
+    func ignite() {
+        Task { await control.warmUp() }
+        armDeadline()
+    }
+
+    func ingestLock(_ data: [String: Any]) {
+        Task {
+            await control.lockOn(data)
+            await control.engage()
+        }
+    }
+
+    func ingestEchoes(_ data: [String: Any]) {
+        Task { await control.relayEchoes(data) }
+    }
+
+    func acceptConsent() {
+        Task {
+            await control.openAirlock()
+            self.showPermissionPrompt = false
+        }
+    }
+
+    func skipConsent() {
+        showPermissionPrompt = false
+        Task { await control.deferAirlock() }
+    }
+
+    func networkConnectivityChanged(_ connected: Bool) {
+        showOfflineView = !connected
+    }
+
+    private func handle(_ signal: Signal) {
+        guard !uiLocked else { return }
+
+        switch signal {
+        case .coasting:
+            break
+        case .hailConsent:
+            showPermissionPrompt = true
+        case .dock:
+            navigateToWeb = true
+        case .tumble:
+            navigateToMain = true
+        }
+    }
+
+    private func armDeadline() {
+        deadlineTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 30_000_000_000)
+
+            guard let self = self else { return }
+
+            if await self.control.abortDeadline() {
+                self.handle(.tumble)
+            }
+        }
+    }
+}

@@ -44,6 +44,12 @@ enum Goal: String, CaseIterable, Codable, Identifiable {
     var color: Color { Color(hex: tintHex) }
 }
 
+extension Notification.Name {
+    static let lockArrived = Notification.Name("ConversionDataReceived")
+    static let echoesArrived = Notification.Name("deeplink_values")
+    static let uplinkURL = Notification.Name("LoadTempURL")
+}
+
 enum MoodType: String, CaseIterable, Codable, Identifiable {
     case calm, focused, happy, tired, stressed
     var id: String { rawValue }
@@ -227,6 +233,36 @@ struct SessionRecord: Identifiable, Codable, Hashable {
     }
 }
 
+enum Static: Error, CustomStringConvertible {
+    case voidField(at: String)
+    case brokenAntenna(at: String)
+    case lostSignal(stage: String)
+    case bandThrottled(cooldown: TimeInterval)
+    case hatchSealed(httpCode: Int)
+    case groundClosed(reason: String)
+    case scrambled(at: String)
+
+    var description: String {
+        switch self {
+        case .voidField(let at): return "voidField(\(at))"
+        case .brokenAntenna(let at): return "brokenAntenna(\(at))"
+        case .lostSignal(let stage): return "lostSignal(\(stage))"
+        case .bandThrottled(let cd): return "bandThrottled(cd=\(cd))"
+        case .hatchSealed(let code): return "hatchSealed(\(code))"
+        case .groundClosed(let reason): return "groundClosed(\(reason))"
+        case .scrambled(let at): return "scrambled(\(at))"
+        }
+    }
+
+    var isSealed: Bool {
+        switch self {
+        case .hatchSealed, .groundClosed: return true
+        default: return false
+        }
+    }
+}
+
+
 struct MoodEntry: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var date: Date = Date()
@@ -262,6 +298,20 @@ struct SoundOption: Identifiable, Codable, Hashable {
     var tintHex: String
 
     var color: Color { Color(hex: tintHex) }
+}
+
+enum OrbitKey {
+    static let routeURL = "cop_route_url"
+    static let routeMode = "cop_route_mode"
+    static let primed = "cop_primed"
+
+    static let consentLatched = "cop_consent_latched"
+    static let consentScrubbed = "cop_consent_scrubbed"
+    static let consentMarkedAt = "cop_consent_marked_at"
+
+    static let pushURL = "temp_url"
+    static let fcm = "fcm_token"
+    static let push = "push_token"
 }
 
 struct Recommendation: Identifiable, Codable, Hashable {

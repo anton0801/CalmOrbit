@@ -7,11 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F4EF5202FE3EEFD00703C4A /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4EF51F2FE3EEFD00703C4A /* AppsFlyerLib */; };
+		8F4EF5232FE3EF1800703C4A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4EF5222FE3EF1800703C4A /* FirebaseCore */; };
+		8F4EF5252FE3EF1800703C4A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4EF5242FE3EF1800703C4A /* FirebaseMessaging */; };
+		8F4EF54E2FE4048F00703C4A /* OrbitInService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8F4EF5472FE4048E00703C4A /* OrbitInService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8F4EF5562FE4049D00703C4A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4EF5552FE4049D00703C4A /* FirebaseMessaging */; };
 		8F58E9C72FDB30BB0063055E /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 8F58E9C62FDB30BB0063055E /* codemagic.yaml */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8F4EF54C2FE4048F00703C4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F059C432FD84D27008C7797 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F4EF5462FE4048E00703C4A;
+			remoteInfo = OrbitInService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F4EF5532FE4048F00703C4A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8F4EF54E2FE4048F00703C4A /* OrbitInService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8F059C4B2FD84D27008C7797 /* CalmOrbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalmOrbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4EF5472FE4048E00703C4A /* OrbitInService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OrbitInService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F58E9C62FDB30BB0063055E /* codemagic.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -22,6 +52,13 @@
 				Info.plist,
 			);
 			target = 8F059C4A2FD84D27008C7797 /* CalmOrbit */;
+		};
+		8F4EF5522FE4048F00703C4A /* Exceptions for "OrbitInService" folder in "OrbitInService" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8F4EF5462FE4048E00703C4A /* OrbitInService */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -34,6 +71,14 @@
 			path = CalmOrbit;
 			sourceTree = "<group>";
 		};
+		8F4EF5482FE4048E00703C4A /* OrbitInService */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F4EF5522FE4048F00703C4A /* Exceptions for "OrbitInService" folder in "OrbitInService" target */,
+			);
+			path = OrbitInService;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +86,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F4EF5252FE3EF1800703C4A /* FirebaseMessaging in Frameworks */,
+				8F4EF5232FE3EF1800703C4A /* FirebaseCore in Frameworks */,
+				8F4EF5202FE3EEFD00703C4A /* AppsFlyerLib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F4EF5442FE4048E00703C4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4EF5562FE4049D00703C4A /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +108,8 @@
 			children = (
 				8F58E9C62FDB30BB0063055E /* codemagic.yaml */,
 				8F059C4D2FD84D27008C7797 /* CalmOrbit */,
+				8F4EF5482FE4048E00703C4A /* OrbitInService */,
+				8F4EF5542FE4049D00703C4A /* Frameworks */,
 				8F059C4C2FD84D27008C7797 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,8 +118,16 @@
 			isa = PBXGroup;
 			children = (
 				8F059C4B2FD84D27008C7797 /* CalmOrbit.app */,
+				8F4EF5472FE4048E00703C4A /* OrbitInService.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8F4EF5542FE4049D00703C4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,20 +140,48 @@
 				8F059C472FD84D27008C7797 /* Sources */,
 				8F059C482FD84D27008C7797 /* Frameworks */,
 				8F059C492FD84D27008C7797 /* Resources */,
+				8F4EF5532FE4048F00703C4A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8F4EF54D2FE4048F00703C4A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8F059C4D2FD84D27008C7797 /* CalmOrbit */,
 			);
 			name = CalmOrbit;
 			packageProductDependencies = (
+				8F4EF51F2FE3EEFD00703C4A /* AppsFlyerLib */,
+				8F4EF5222FE3EF1800703C4A /* FirebaseCore */,
+				8F4EF5242FE3EF1800703C4A /* FirebaseMessaging */,
 			);
 			productName = CalmOrbit;
 			productReference = 8F059C4B2FD84D27008C7797 /* CalmOrbit.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8F4EF5462FE4048E00703C4A /* OrbitInService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F4EF54F2FE4048F00703C4A /* Build configuration list for PBXNativeTarget "OrbitInService" */;
+			buildPhases = (
+				8F4EF5432FE4048E00703C4A /* Sources */,
+				8F4EF5442FE4048E00703C4A /* Frameworks */,
+				8F4EF5452FE4048E00703C4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8F4EF5482FE4048E00703C4A /* OrbitInService */,
+			);
+			name = OrbitInService;
+			packageProductDependencies = (
+				8F4EF5552FE4049D00703C4A /* FirebaseMessaging */,
+			);
+			productName = OrbitInService;
+			productReference = 8F4EF5472FE4048E00703C4A /* OrbitInService.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -102,6 +196,9 @@
 					8F059C4A2FD84D27008C7797 = {
 						CreatedOnToolsVersion = 16.4;
 					};
+					8F4EF5462FE4048E00703C4A = {
+						CreatedOnToolsVersion = 16.4;
+					};
 				};
 			};
 			buildConfigurationList = 8F059C462FD84D27008C7797 /* Build configuration list for PBXProject "CalmOrbit" */;
@@ -113,12 +210,17 @@
 			);
 			mainGroup = 8F059C422FD84D27008C7797;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8F4EF51E2FE3EEFD00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				8F4EF5212FE3EF1800703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8F059C4C2FD84D27008C7797 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8F059C4A2FD84D27008C7797 /* CalmOrbit */,
+				8F4EF5462FE4048E00703C4A /* OrbitInService */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +234,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F4EF5452FE4048E00703C4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -142,7 +251,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F4EF5432FE4048E00703C4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F4EF54D2FE4048F00703C4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F4EF5462FE4048E00703C4A /* OrbitInService */;
+			targetProxy = 8F4EF54C2FE4048F00703C4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8F059C552FD84D29008C7797 /* Debug */ = {
@@ -272,6 +396,7 @@
 				INFOPLIST_FILE = CalmOrbit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Calm Orbit +";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to use camera in application.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Calm Orbit+ uses tracking data to improve app functionality, enhance the user experience, analyze feature usage, and support ongoing updates and performance optimization. This information also helps maintain app reliability, stability, and security.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -286,7 +411,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.plusofcalorb.CalmOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -313,6 +438,7 @@
 				INFOPLIST_FILE = CalmOrbit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Calm Orbit +";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to use camera in application.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Calm Orbit+ uses tracking data to improve app functionality, enhance the user experience, analyze feature usage, and support ongoing updates and performance optimization. This information also helps maintain app reliability, stability, and security.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -327,7 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.plusofcalorb.CalmOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -338,6 +464,67 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+		8F4EF5502FE4048F00703C4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OrbitInService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OrbitInService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plusofcalorb.CalmOrbit.OrbitInService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F4EF5512FE4048F00703C4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OrbitInService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OrbitInService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plusofcalorb.CalmOrbit.OrbitInService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -362,7 +549,58 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8F4EF54F2FE4048F00703C4A /* Build configuration list for PBXNativeTarget "OrbitInService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4EF5502FE4048F00703C4A /* Debug */,
+				8F4EF5512FE4048F00703C4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F4EF51E2FE3EEFD00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.18.0;
+			};
+		};
+		8F4EF5212FE3EF1800703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F4EF51F2FE3EEFD00703C4A /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4EF51E2FE3EEFD00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		8F4EF5222FE3EF1800703C4A /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4EF5212FE3EF1800703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		8F4EF5242FE3EF1800703C4A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4EF5212FE3EF1800703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		8F4EF5552FE4049D00703C4A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4EF5212FE3EF1800703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F059C432FD84D27008C7797 /* Project object */;
 }
