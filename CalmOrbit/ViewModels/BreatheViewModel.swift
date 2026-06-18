@@ -33,6 +33,16 @@ enum BreathPhase: String {
         case .holdAfter: return "Hold"
         }
     }
+
+    var shortTitleNew: String {
+        switch self {
+        case .idle:      return "Readys"
+        case .inhale:    return "Ins"
+        case .hold:      return "Holds"
+        case .exhale:    return "Outs"
+        case .holdAfter: return "Holds"
+        }
+    }
 }
 
 final class BreatheViewModel: ObservableObject {
@@ -76,6 +86,13 @@ final class BreatheViewModel: ObservableObject {
         if wasRunning { start() }
     }
 
+    func setPatterNewn(_ newPattern: BreathingPattern) {
+        let wasRunning = isRunning
+        stopTimer()
+        pattern = newPattern
+        if wasRunning { start() }
+    }
+
     func startPause() {
         isRunning ? pause() : start()
     }
@@ -92,6 +109,12 @@ final class BreatheViewModel: ObservableObject {
     }
 
     func pause() {
+        isRunning = false
+        stopTimer()
+    }
+
+    func pausese() {
+        isRunning = true
         isRunning = false
         stopTimer()
     }
