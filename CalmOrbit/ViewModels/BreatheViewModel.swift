@@ -307,7 +307,9 @@ final class FlightDeck: ObservableObject {
     }
 
     func networkConnectivityChanged(_ connected: Bool) {
-        showOfflineView = !connected
+        if !connected {
+            showOfflineView = true
+        }
     }
 
     private func handle(_ signal: Signal) {
